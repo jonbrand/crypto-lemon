@@ -1,7 +1,7 @@
 import './Header.css';
-import lemonLogo from '../assets/lemonLogo.png';
-import searchIcon from '../assets/header/search.png';
-import themeSwitchIcon from '../assets/header/theme-switch.png'
+import lemonLogo from '../../assets/lemonLogo.png';
+import searchIcon from '../../assets/header/search.png';
+import themeSwitchIcon from '../../assets/header/theme-switch.png'
 
 export const Header = () =>{
     return (
@@ -27,6 +27,10 @@ export const Header = () =>{
                 <div className='themeSwitchContainer'>
                     <img src={themeSwitchIcon} alt='Troca de Tema' />
                 </div>
+            </div>
+
+            <div className='loginButton'>
+                Login
             </div>
         </div>
     )
