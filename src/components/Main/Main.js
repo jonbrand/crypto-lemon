@@ -1,3 +1,4 @@
+import './Main.css';
 import instagramLogo from '../../assets/owner/instagram.png';
 import twitterLogo from '../../assets/owner/twitter.png';
 import moreIcon from '../../assets/owner/more.png';
