@@ -6,7 +6,8 @@ import { LemonList } from './components/LemonList/LemonList';
 import { Main } from './components/Main/Main';
 
 function App() {
-  const [lemonListData, setLemonListData] = useState([])
+  const [lemonListData, setLemonListData] = useState([]);
+  const [selectedLemon, setSelectedLemon] = useState(0);
 
   useEffect(() => {
     const getMyNfts = async () => {
@@ -20,8 +21,14 @@ function App() {
   return (
     <div className='app'>
       <Header />
-      <Main />
-      <LemonList lemonListData={lemonListData} />
+      {
+        lemonListData.length > 0 && (
+          <>
+            <Main lemonListData={lemonListData} selectedLemon={selectedLemon} />
+            <LemonList lemonListData={lemonListData} setSelectedLemon={setSelectedLemon} />
+          </>
+        )
+      }
     </div>
   );
 }

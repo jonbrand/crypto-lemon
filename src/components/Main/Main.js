@@ -1,9 +1,15 @@
 import './Main.css';
+import { useEffect, useState } from 'react';
 import instagramLogo from '../../assets/owner/instagram.png';
 import twitterLogo from '../../assets/owner/twitter.png';
 import moreIcon from '../../assets/owner/more.png';
 
-export const Main = () => {
+export const Main = ({ selectedLemon, lemonListData}) => {
+    const [activeLemon, setActiveLemon] = useState(lemonListData[0]);
+
+    useEffect(() => {
+        setActiveLemon(lemonListData[selectedLemon])
+    }, [lemonListData, selectedLemon])
     return (
         <div className="main">
             <div className="mainContent">
@@ -11,27 +17,27 @@ export const Main = () => {
                     <div className="lemonContainer">
                         <img 
                             className="selectedLemon" 
-                            src={'https://ipfs.thirdweb.com/ipfs/QmdJ83dEGFixifoXnzo4SuMKdgkSnqydW1N5igScgznQFo/0.png'} 
+                            src={activeLemon.image_url} 
                             alt='imagem ativa'
                         />
                     </div>
                 </div>
                 <div className="lemonDetails" style={{color:'#fff'}}>
                     <div className="title">
-                        Lemon Baby
+                        {activeLemon.name}
                     </div>
-                    <span className="itemNumber">#1</span>
+                    <span className="itemNumber">#{activeLemon.token_id}</span>
                 </div>
                 <div className="owner">
                     <div className="ownerImageContainer">
                         <img 
-                            src={'https://ipfs.thirdweb.com/ipfs/QmdJ83dEGFixifoXnzo4SuMKdgkSnqydW1N5igScgznQFo/0.png'} 
+                            src={activeLemon.owner.profile_img_url} 
                             alt='imagem escolhida' 
                         />
                     </div>
                     <div className="ownerDetails">
                         <div className="ownerNameAndHandle">
-                            <div>0x8daa623f9F22586825149E48C4BE66105C7e9a9a</div>
+                            <div>{activeLemon.owner.address}</div>
                             <div className="ownerHandle">@jonbrand</div>
                         </div>
                         <div className="ownerLink">
