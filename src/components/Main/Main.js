@@ -8,8 +8,13 @@ export const Main = ({ selectedLemon, lemonListData}) => {
     const [activeLemon, setActiveLemon] = useState(lemonListData[0]);
 
     useEffect(() => {
-        setActiveLemon(lemonListData[selectedLemon])
-    }, [lemonListData, selectedLemon])
+        if (!selectedLemon) return
+    
+        setActiveLemon(
+          lemonListData.find(lemon => lemon.token_id === selectedLemon)
+        )
+      }, [lemonListData, selectedLemon])
+      
     return (
         <div className="main">
             <div className="mainContent">
